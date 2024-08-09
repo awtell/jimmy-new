@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import useCountUp from './UseCountUp';
 
 interface Feature {
   title: string;
@@ -29,6 +30,12 @@ const FeatureComponent: React.FC = () => {
   const navigate = useNavigate();
   const features = generateRandomValues();
 
+  // Using the custom hook to animate numbers
+  const speakersCount = useCountUp(50, 2000);
+  const attendanceCount = useCountUp(850, 2000);
+  const workshopsCount = useCountUp(10, 2000);
+  const journalistsCount = useCountUp(300, 2000);
+
   const handleBooking = (feature: Feature) => {
     window.scrollTo(0, 0);
     navigate(`/table_detail/${feature.title}`, { state: { capacity: feature.details.capacity, price: feature.details.price } });
@@ -45,7 +52,7 @@ const FeatureComponent: React.FC = () => {
                 <div className="col-lg-3 col-md-3 p-2">
                   <div className="counter-box p-2 border-end border-white border-opacity-25">
                     <h1 className="text-white m-0">
-                      <span className="num" data-val="50"></span>
+                      <span className="num">{speakersCount}</span>
                       <span>+</span>
                     </h1>
                     <p>Speakers</p>
@@ -54,16 +61,16 @@ const FeatureComponent: React.FC = () => {
                 <div className="col-lg-3 col-md-3 p-2">
                   <div className="counter-box p-2 border-end border-white border-opacity-25">
                     <h1 className="text-white m-0">
-                      <span className="num" data-val="850"></span>
+                      <span className="num">{attendanceCount}</span>
                       <span>+</span>
                     </h1>
-                    <p>Attendence</p>
+                    <p>Attendance</p>
                   </div>
                 </div>
                 <div className="col-lg-3 col-md-3 p-2">
                   <div className="counter-box p-2 border-end border-white border-opacity-25">
                     <h1 className="text-white m-0">
-                      <span className="num" data-val="10"></span>
+                      <span className="num">{workshopsCount}</span>
                       <span>+</span>
                     </h1>
                     <p>Workshops</p>
@@ -72,10 +79,10 @@ const FeatureComponent: React.FC = () => {
                 <div className="col-lg-3 col-md-3 p-2">
                   <div className="p-2">
                     <h1 className="text-white m-0">
-                      <span className="num" data-val="300"></span>
+                      <span className="num">{journalistsCount}</span>
                       <span>+</span>
                     </h1>
-                    <p className="mb-0">Journalist</p>
+                    <p className="mb-0">Journalists</p>
                   </div>
                 </div>
               </div>

@@ -6,7 +6,7 @@ const Banner = () => {
 
     useEffect(() => {
         const calculateCountdown = () => {
-            const eventDate = new Date('2024-08-22T00:00:00');
+            const eventDate = new Date('2024-10-22T00:00:00');
             const now = new Date();
             const difference = eventDate.getTime() - now.getTime();
 
